@@ -243,7 +243,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             </html>`
         });
 
-
         return res.status(201).json({ message: 'User registered successfully', user: { first_name, last_name, email, user_id: user._id } });
     } catch (error) {
         console.error(error);
