@@ -92,4 +92,4 @@ const userSchema = new Schema({
     },
 });
 
-export const PendingUser = mongoose.model('PendingUser', userSchema);
+export const PendingUser = mongoose.model('UserPending', userSchema);
