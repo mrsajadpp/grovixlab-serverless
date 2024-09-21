@@ -1,6 +1,6 @@
 // config.js
 require("dotenv").config();
-const mongoose = require('mongoose'); 
+const mongoose = require('mongoose');
 
 const connect = async () => {
     try {
@@ -19,5 +19,7 @@ const connect = async () => {
         process.exit(1);
     }
 };
+
+connect();
 
 module.exports = connect;

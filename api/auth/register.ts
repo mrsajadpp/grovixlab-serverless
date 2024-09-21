@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 // import { connect } from '../../database/config';
-const connnect = require('../../database/config');
+const connect = require('../../database/config');
 import { sendMail } from '../../mail/config';
 import { validateEmail } from '../../utils/validator/email';
 import { generateCode } from '../../utils/code';
@@ -17,8 +17,6 @@ import { UserBin } from '../../database/models/user/bin';
 // Code Database
 import { Code } from '../../database/models/code/model';
 import { CodeBin } from '../../database/models/code/bin';
-
-connnect();
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
     try {
