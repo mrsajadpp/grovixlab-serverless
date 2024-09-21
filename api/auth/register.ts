@@ -32,40 +32,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             date_of_birth
         } = req.query;
 
-        if (!first_name) {
-            return res.status(400).json({ error: 'First name is required' });
-        }
-        if (!last_name) {
-            return res.status(400).json({ error: 'Last name is required' });
-        }
-        if (!email) {
-            return res.status(400).json({ error: 'Email is required' });
-        }
-        if (!password) {
-            return res.status(400).json({ error: 'Password is required' });
-        }
-        if (!country_code) {
-            return res.status(400).json({ error: 'Country code is required' });
-        }
-        if (!contact_no) {
-            return res.status(400).json({ error: 'Phone number is required' });
-        }
-        if (!date_of_birth) {
-            return res.status(400).json({ error: 'Date of birth is required' });
-        }
-        if (!date_of_birth) {
-            return res.status(400).json({ error: 'Date of birth is required' });
-        }
-        if (!validateEmail(email)) {
-            return res.status(400).json({ error: 'Invalid email address' });
-        }
+        if (!first_name) return res.status(400).json({ error: 'First name is required' });
+        if (!last_name) return res.status(400).json({ error: 'Last name is required' });
+        if (!email) return res.status(400).json({ error: 'Email is required' });
+        if (!password) return res.status(400).json({ error: 'Password is required' });
+        if (!country_code) return res.status(400).json({ error: 'Country code is required' });
+        if (!contact_no) return res.status(400).json({ error: 'Phone number is required' });
+        if (!date_of_birth) return res.status(400).json({ error: 'Date of birth is required' });
+        if (!date_of_birth) return res.status(400).json({ error: 'Date of birth is required' });
+        if (!validateEmail(email)) return res.status(400).json({ error: 'Invalid email address' });
 
         let existUser = await User.findOne({ email: email }).lean();
         let existPendingUser = await UserPending.findOne({ email: email }).lean();
         let existBinUser = await UserBin.findOne({ email: email }).lean();
-        if (existUser || existBinUser) {
-            return res.status(400).json({ error: 'User with this email exist' });
-        }
+        if (existUser || existBinUser) return res.status(400).json({ error: 'User with this email exist' });
 
         const hashedPassword = await bcrypt.hash(password, 10);
         let user;
