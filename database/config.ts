@@ -2,7 +2,7 @@
 require("dotenv").config();
 const mongoose = require('mongoose'); 
 
-export const connect = async () => {
+const connect = async () => {
     try {
         mongoose.connection.on('connected', function () {
             // Hack the database back to the right one, because when using mongodb+srv as protocol.
@@ -19,3 +19,5 @@ export const connect = async () => {
         process.exit(1);
     }
 };
+
+module.exports = connect;
